@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.jumbotron {
+    background-image: url("../img/bts-2.jpeg");
+    background-size: 100% 100%;
+    height: auto;
+    max-width: 100%;
+    margin: 0;
+    scroll-behavior: smooth;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#result-card {
+
+}
