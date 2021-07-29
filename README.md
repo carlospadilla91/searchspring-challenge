@@ -1,6 +1,6 @@
 # BTS
 
-![Picture of BTS](img/cover of site.png)
+![Picture of BTS](img/site-cover.png)
 
 ---
 
