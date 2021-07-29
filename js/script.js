@@ -43,7 +43,7 @@ const createSearchResultsCards = (formattedObject) => {
             </div>`
     } else {
         html +=
-            `<div class="result-card">
+            `<div class="result-card" id="result-card">
             <div class="result-img-container">
                 <img src="${formattedObject.image}" class="result-thumbnail" alt="Image for ${formattedObject.name}"/>
             </div>
