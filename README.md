@@ -1,6 +1,6 @@
 # BTS
 
-![Picture of Gogreen Welcome pitch](/Users/carlospadilla/IdeaProjects/searchspring-challenge/img/cover of site.png)
+![Picture of BTS](/Users/carlospadilla/IdeaProjects/searchspring-challenge/img/cover of site.png)
 
 ---
 
