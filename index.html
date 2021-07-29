@@ -2,50 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>BTS</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Schoolbell&display=swap" rel="stylesheet">
 </head>
 <body>
 
 <!--NAVBAR-->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Logo</a>
+<nav class="navbar navbar-expand-lg">
+    <a class="navbar-brand" href="index.html">BTS<i class="fas fa-pencil-alt"></i></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2 search-box" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0 search-btn" type="submit">Search</button>
+            <button class="btn btn-primary my-2 my-sm-0 search-btn" type="submit">Search</button>
         </form>
-        <i class="fas fa-shopping-cart"></i>
+        <div class="cart-container">
+            <i class="fas fa-shopping-bag fa-2x add-cart"></i>
+            <span class="badge badge-warning" id="cart-count">0</span>
+        </div>
     </div>
 </nav>
 
 <header>
     <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h1 class="display-4">Shop online!</h1>
-            <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+        <div class="welcome-container">
+            <h1 class="display-4">Back to school sale!</h1>
+            <p class="lead slogan">That time of year once again. Start your search here!</p>
         </div>
     </div>
 </header>
@@ -57,8 +49,8 @@
         </div>
         <div class="pagination-right">
             <div class="arrow-btn-container">
-                <button type="submit"><i class="fas fa-arrow-circle-left"></i></button>
-                <button type="submit"><i class="fas fa-arrow-circle-right"></i></button>
+                <button class="btn btn-success left-arrow" type="submit"><i class="fas fa-arrow-circle-left"></i>Previous</button>
+                <button class="btn btn-success right-arrow" type="submit">Next<i class="fas fa-arrow-circle-right"></i></button>
             </div>
         </div>
     </div>
@@ -76,13 +68,20 @@
 <div class="bottom-pagination">
     <div class="pagination-right">
         <div class="arrow-btn-container">
-            <button type="submit"><i class="fas fa-arrow-circle-left"></i></button>
-            <button type="submit"><i class="fas fa-arrow-circle-right"></i></button>
+            <button class="btn btn-success left-arrow ml-1" type="submit"><i class="fas fa-arrow-circle-left"></i>Previous</button>
+            <button class="btn btn-success right-arrow" type="submit">Next<i class="fas fa-arrow-circle-right"></i></button>
         </div>
     </div>
 </div>
 
-<footer></footer>
+<footer>
+    <div class="footer-container">
+        <div class="contact-container">
+            <a href="https://www.linkedin.com/in/carlospadilla91/"><i class="fab fa-linkedin fa-2x"></i></a>
+            <a href="https://github.com/carlospadilla91"><i class="fab fa-github-alt fa-2x"></i></a>
+        </div>
+    </div>
+</footer>
 
 <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
 <script src="js/script.js"></script>

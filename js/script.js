@@ -14,9 +14,12 @@ const getApiData = (searchInput, pageNo) => {
         }))
             .then(response => response.json())
             .then(data => {
-                resolve(data)
-                console.log(data)
-                createResultsTemplate(data)
+                resolve(data);
+                console.log(data);
+                let pageInfo = pagination(data);
+                renderLeftArrowBtn(pageInfo);
+                renderRightArrowBtn(pageInfo);
+                createResultsTemplate(data);
             })
             .catch(error => console.error())
     }))
@@ -30,13 +33,12 @@ const createSearchResultsCards = (formattedObject) => {
                 <img src="${formattedObject.image}" class="card-img-top" alt="${formattedObject.name}">
                 <div class="card-body">
                     <p class="result-name">${formattedObject.name}</p>
+                    <hr>
                 </div>
-                <div class="price-container">
-                    <p class="result-msrp">$${formattedObject.msrp}</p>
-                    <p class="result-price">$${formattedObject.price}</p>
-                </div>
-                <div class="add-cart-container">
-                    <i class="shopping cart large icon add-cart-btn"></i>
+                <div class="price-cart-container">
+                    <span class="result-msrp">$${formattedObject.msrp}</span>
+                    <span class="result-price">$${formattedObject.price}</span>
+                    <a href="#" class="add-to-cart btn btn-success">Add to cart</a>
                 </div>
             </div>`
     } else {
@@ -47,13 +49,12 @@ const createSearchResultsCards = (formattedObject) => {
             </div>
             <div class="result-name-container">
                 <p class="result-name">${formattedObject.name}</p>
+                <hr>
             </div>
             <div class="price-and-cart">
-                <div class="result-price-container">
-                    <p class="no-msrp">$${formattedObject.price}</p>
-                </div>
-                <div class="add-cart-container">
-                    <i class="shopping cart large icon add-cart-btn"></i>
+                <div class="price-cart-container">
+                    <span class="no-msrp">$${formattedObject.price}</span>
+                    <a href="#" class="add-to-cart btn btn-success">Add to cart</a>
                 </div>
             </div>    
         </div>`
@@ -98,14 +99,34 @@ const renderResultsSearch = (data) => {
 
 // Pagination
 
-const pagination = () => {
+const pagination = (data) => {
     let pageNo = {
         currentPage: data.pagination.currentPage,
         nextPage: data.pagination.nextPage ?? "data unavailable",
+        currentPage: data.pagination.currentPage,
         defaultPerPage: data.pagination.defaultPerPage,
         previousPage: data.pagination.previousPage,
     }
+    console.log(pageNo)
     return pageNo;
+}
+
+const renderLeftArrowBtn = (pageInfo) => {
+    if (pageInfo.previousPage !== 0) {
+        $('.left-arrow').val(pageInfo.previousPage);
+        $('.left-arrow').css("display", "inline-block");
+    } else {
+        $('.left-arrow').css("display", "none");
+    }
+}
+
+const renderRightArrowBtn = (pageInfo) => {
+    if (pageInfo.nextPage !== 0) {
+        $('.right-arrow').val(pageInfo.nextPage);
+        $('.right-arrow').css("display", "inline-block");
+    } else {
+        $('.right-arrow').css("display", "none");
+    }
 }
 
 // DOM events
@@ -118,12 +139,36 @@ $(document).ready(function () {
         let searchResults = `<h2 class="search-term">Searched for: <span><em>${searchInput}</em></span></h2>`;
         $('.query-search-display').html(searchResults);
         getApiData(searchInput, 1);
-
-        // // if user presses enter key instead of click
-        // $(".search-box").keypress((e) => {
-        //     if(e.which == 13){
-        //         $('.search-btn').click();
-        //     }
-        // });
+        $('.left-arrow').data('id', searchInput);
+        $('.right-arrow').data('id', searchInput);
     })
+
+    $('.left-arrow').click((e) => {
+        e.preventDefault();
+        let searchInput = $('.left-arrow').data('id');
+        let previousPage = $('.left-arrow').val();
+        getApiData(searchInput, previousPage);
+    })
+
+    $('.right-arrow').click((e) => {
+        e.preventDefault();
+        let searchInput = $('.right-arrow').data('id');
+        let nextPage = $('.right-arrow').val();
+        getApiData(searchInput, nextPage);
+    })
+
+    $(document).on('click', '.add-to-cart', (e) => {
+        console.log('clicked');
+        e.preventDefault();
+        let cartCount = $('#cart-count').text();
+        let updatedCartCount = parseFloat(cartCount) + 1;
+        $('#cart-count').text(updatedCartCount);
+    })
+
+    $(document).ready(() => {
+        $('.navbar-brand').click(() => {
+            location.reload(true);
+        })
+    })
+
 })
