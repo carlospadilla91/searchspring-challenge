@@ -1,6 +1,6 @@
 # BTS
 
-![Picture of BTS](/Users/carlospadilla/IdeaProjects/searchspring-challenge/img/cover of site.png)
+![Picture of BTS](img/cover of site.png)
 
 ---
 
@@ -8,10 +8,10 @@
 
 ---
 
-##Description
+## Description
 BTS is a front end site working with Searchspring API where you are able to easily search through the entire app with one click away.
 
-###Built with:
+### Built with:
 
 - HTML
 - CSS
